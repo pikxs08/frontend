@@ -6,6 +6,7 @@ function Search() {
   const [mediaType, setMediaType] = useState("all"); // ["all", "music", "movie", "tvShow"]
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const searchTerm = useRef(null);
 
   useEffect(() => {
@@ -36,6 +37,8 @@ function Search() {
 
   const handleSearch = async (e) => {
     e.preventDefault();
+    if (search === "") return setError(true); // Prevents empty search
+    setError(false); // Reset error state
     setLoading(true);
     await fetchResults();
     // Clear inputs after search
@@ -46,11 +49,27 @@ function Search() {
   return (
     <div>
       <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
+        <div className="search-top">
+          <div className="search-cont">
+            <input
+              type="text"
+              value={search}
+              placeholder={
+                search === "" && error
+                  ? "Please type in a valid search term..."
+                  : ""
+              }
+              onChange={(e) => setSearch(e.target.value)}
+              className="search-input"
+            />
+            <button className="submit-btn" type="submit">
+              Search
+            </button>
+          </div>
+          <p style={{ marginBottom: 0, fontWeight: "bold" }}>
+            filter by category:
+          </p>
+        </div>
         <div className="radio-cont">
           <label>
             <input
@@ -134,13 +153,23 @@ function Search() {
             music video
           </label>
         </div>
-        <button type="submit">Search</button>
       </form>
       {loading && <p>Loading...</p>}
-      <p>Number of results: {results.length}</p>
+      <p>
+        {results.length > 0 ? (
+          <p className="pill">
+            Number of results for <strong>"{searchTerm.current}"</strong>:{" "}
+            <strong>{results.length}</strong>
+          </p>
+        ) : (
+          ""
+        )}
+      </p>
       <ul className="results-cont">
-        {searchTerm.current === null && !loading ? (
-          <li>Search something above...</li>
+        {searchTerm.current === null && !error ? (
+          <li className="pill" style={{ backgroundColor: "lightblue" }}>
+            Search something above...
+          </li>
         ) : results !== undefined && results.length !== 0 ? (
           results.map((result) => (
             <li key={result.trackId + 1} className="card-cont">
@@ -150,17 +179,26 @@ function Search() {
                 alt={result.collectionName || result.trackName}
               />
               <div className="card-body">
-                <p>
-                  <strong>{result.collectionName || result.trackName}</strong>
+                <p className="copy">
+                  <strong>{result.trackName}</strong>
                 </p>
-                <p>{result.artistName}</p>
+                <p className="copy">{result.artistName}</p>
               </div>
             </li>
           ))
-        ) : searchTerm.current === "" ? (
-          <li>Please type in a valid search term...</li>
+        ) : error ? (
+          <li
+            className="pill"
+            style={{
+              fontWeight: "bold",
+              color: "white",
+              backgroundColor: "red",
+            }}
+          >
+            Please type in a valid search term...
+          </li>
         ) : (
-          <li>
+          <li className="pill">
             no search result found for "<strong>{searchTerm.current}...</strong>
             "
           </li>
