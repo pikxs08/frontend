@@ -12,6 +12,7 @@ function Search() {
   const searchTerm = useRef(null);
   const [favorites, setFavorites] = useState([]);
 
+  //   Initial get request to fetch all favorites
   useEffect(() => {
     if (favorites.length === 0) {
       getFavorites();
@@ -29,6 +30,7 @@ function Search() {
     }
   }
 
+  //   Function to fetch search results
   async function fetchResults() {
     try {
       let response = "";
@@ -122,6 +124,7 @@ function Search() {
     }
   };
 
+  //   Function to handle the click event
   const clicked = (e, result) => {
     e.preventDefault();
     console.log("clicked: ", result);

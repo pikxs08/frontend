@@ -31,6 +31,7 @@ function FavoritesList({ favorites, deleteFavorite }) {
               </div>
               <Trash
                 className="trash"
+                data-testid="delete-icon" // Add data-testid here
                 onClick={() => handleDelete(favorite.title)}
               />
             </div>
