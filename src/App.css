@@ -4,13 +4,24 @@
   padding: 1rem;
 }
 
+.star,
+.star-fill {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
 /* Results container */
 
 .results-cont {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
   width: 100%;
+  justify-content: space-evenly;
   gap: 1rem;
 }
 
@@ -30,6 +41,7 @@ ul {
 /* Card container */
 
 .card-cont {
+  position: relative;
   width: 200px;
   height: 280px;
   padding: 10px;
@@ -113,7 +125,7 @@ ul {
 .search-cont {
   display: flex;
   width: 500px;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
   margin: 0;
@@ -133,4 +145,61 @@ ul {
     background-color: #212121;
     transition: all 0.2s ease-in-out;
   }
+}
+
+/* Favorite Img */
+
+.favorite-img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+form {
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+}
+
+.trash {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.favorites {
+  height: 300px;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.favorite-cont {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.favorite-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.title-p {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0;
+  width: 225px;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.artist-p {
+  font-size: 0.5rem;
+  margin: 0;
 }
