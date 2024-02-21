@@ -1,4 +1,3 @@
-import { set } from "lodash";
 import React, { useEffect, useState, useRef } from "react";
 import { Star, StarFill } from "react-bootstrap-icons";
 import FavoritesList from "./Favourites";

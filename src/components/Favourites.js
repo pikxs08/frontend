@@ -1,4 +1,3 @@
-import React, { useEffect, useState, useRef } from "react";
 import { Trash } from "react-bootstrap-icons";
 
 function FavoritesList({ favorites, deleteFavorite }) {
