@@ -39,5 +39,10 @@
   },
   "devDependencies": {
     "jest": "^27.5.1"
-  }
+  },
+  "engines": {
+    "node": "21.2.0",
+    "npm": "10.2.3"
+  },
+  "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
 }
