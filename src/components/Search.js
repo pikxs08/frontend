@@ -286,9 +286,9 @@ function Search() {
             Search something above...
           </li>
         ) : results !== undefined && results.length !== 0 ? (
-          results.map((result) => (
+          results.map((result, index) => (
             <li
-              key={result.trackId + 1}
+              key={result.trackId || index} // Use index as key if trackId is not available
               onClick={(e) => clicked(e, result)}
               className="card-cont"
             >
