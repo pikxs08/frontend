@@ -21,9 +21,7 @@ function Search() {
   //   Get all favorites
   async function getFavorites() {
     try {
-      const response = await fetch(
-        "https://itunes-search-express-309705ffa24d.herokuapp.com/api"
-      );
+      const response = await fetch("/api");
       const data = await response.json();
       setFavorites(data);
     } catch (error) {
@@ -61,7 +59,7 @@ function Search() {
     if (favoriteExists) {
       alert("Favorite already exists");
     } else {
-      fetch("https://itunes-search-express-309705ffa24d.herokuapp.com/post", {
+      fetch("/post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -91,7 +89,7 @@ function Search() {
 
   //   Function to delete a favourite from the list of favourites
   const deleteFavorite = (title) => {
-    fetch("https://itunes-search-express-309705ffa24d.herokuapp.com/delete", {
+    fetch("/delete", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
