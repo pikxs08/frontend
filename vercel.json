@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "src": "/api", "dest": "https://your-heroku-app.herokuapp.com/api" },
+    { "src": "/post", "dest": "https://your-heroku-app.herokuapp.com/post" },
+    { "src": "/delete", "dest": "https://your-heroku-app.herokuapp.com/delete" }
+  ]
+}
