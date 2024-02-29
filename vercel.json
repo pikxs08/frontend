@@ -1,7 +1,31 @@
 {
   "routes": [
-    { "src": "/api", "dest": "https://your-heroku-app.herokuapp.com/api" },
-    { "src": "/post", "dest": "https://your-heroku-app.herokuapp.com/post" },
-    { "src": "/delete", "dest": "https://your-heroku-app.herokuapp.com/delete" }
+    {
+      "src": "/api",
+      "dest": "https://itunes-search-express-309705ffa24d.herokuapp.com/api/api"
+    },
+    {
+      "src": "/post",
+      "dest": "https://itunes-search-express-309705ffa24d.herokuapp.com/api/post"
+    },
+    {
+      "src": "/delete",
+      "dest": "https://itunes-search-express-309705ffa24d.herokuapp.com/api/delete"
+    }
+  ],
+
+  "rewrites": [
+    {
+      "source": "/api",
+      "destination": "https://itunes-search-express-309705ffa24d.herokuapp.com/api"
+    },
+    {
+      "source": "/post",
+      "destination": "https://itunes-search-express-309705ffa24d.herokuapp.com/post"
+    },
+    {
+      "source": "/delete",
+      "destination": "https://itunes-search-express-309705ffa24d.herokuapp.com/delete"
+    }
   ]
 }
